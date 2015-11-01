@@ -11,6 +11,7 @@ use Condorcet\CondorcetException;
 use Condorcet\Election;
 
 // Registering native Condorcet Methods implementation
+Condorcet::addMethod(__NAMESPACE__.'\\Algo\\Methods\\AlternativeVote');
 Condorcet::addMethod(__NAMESPACE__.'\\Algo\\Methods\\Copeland');
 Condorcet::addMethod(__NAMESPACE__.'\\Algo\\Methods\\KemenyYoung');
 Condorcet::addMethod(__NAMESPACE__.'\\Algo\\Methods\\MinimaxWinning');
