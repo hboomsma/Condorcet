@@ -324,7 +324,7 @@ class Election
         // only if the vote has not started
         if ( $this->_State > 1 ) { throw new CondorcetException(2); }
 
-        
+
         if ( !is_array($list) )
         {
             $list = array($list);
@@ -475,7 +475,7 @@ class Election
     public function setStateToVote () : bool
     {
         if ( $this->_State === 1 )
-            { 
+            {
                 if (empty($this->_Candidates))
                     { throw new CondorcetException(20); }
 
@@ -484,7 +484,7 @@ class Election
 
         // If voting continues after a first set of results
         elseif ( $this->_State > 2 )
-            { 
+            {
                 $this->cleanupResult();
             }
 
@@ -569,23 +569,23 @@ class Election
         protected function registerVote (Vote $vote, $tag = null) : Vote
         {
             // Vote identifiant
-            $vote->addTags($tag);           
-            
+            $vote->addTags($tag);
+
             // Register
             try {
                 $vote->registerLink($this);
-                $this->_Votes[] = $vote;                
+                $this->_Votes[] = $vote;
             } catch (CondorcetException $e) {
                 // Security : Check if vote object not already register
                 throw new CondorcetException(6,'Vote object already registred');
-            }           
+            }
 
             return $vote;
         }
 
 
     public function removeVote ($in, bool $with = true) : array
-    {    
+    {
         $rem = [];
 
         if ($in instanceof Vote) :
@@ -675,7 +675,7 @@ class Election
 
                 // Errors
                 if ( !is_numeric($multiple) )
-                { 
+                {
                     throw new CondorcetException(13, null);
                 }
 
@@ -792,7 +792,7 @@ class Election
 
         // Filter if tag is provided & return
         if ($options['%tagFilter'])
-        { 
+        {
             $chrono = new Timer_Chrono ($this->_timer, 'GetResult with filter');
 
             $filter = new self;
@@ -880,10 +880,10 @@ class Election
 
         protected function condorcetBasicSubstitution ($substitution) : string {
             if ( $substitution )
-            {           
+            {
                 if ($substitution === true)
                     {$substitution = Condorcet::getDefaultMethod();}
-                
+
                 if ( Condorcet::isAuthMethod($substitution) )
                     {$algo = $substitution;}
                 else
@@ -940,7 +940,7 @@ class Election
     protected function cleanupResult () : void
     {
         // Reset state
-        if ($this->_State > 2) : 
+        if ($this->_State > 2) :
             $this->_State = 2;
         endif;
 

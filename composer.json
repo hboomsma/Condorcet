@@ -14,9 +14,10 @@
     ],
     "require": {
         "php": ">=7.1.0",
-        "ext-mbstring": "*",
         "ext-ctype": "*",
-        "ext-json": "*"
+        "ext-json": "*",
+        "ext-mbstring": "*",
+        "phpunit/phpunit": "^6.2"
     },
     "suggest": {
         "ext-pdo": "Allow to use database for very large elections.",
@@ -30,5 +31,18 @@
      ],
     "autoload": {
         "psr-4": { "Condorcet\\": "lib/" }
+    },
+    "autoload-dev": {
+        "psr-4": { "Condorcet\\": "test/" }
+    },
+    "archive": {
+        "exclude": [
+            "/test",
+            "/doc",
+            "/examples",
+            "condorcet-logo.psd",
+            "phpcs.xml.dist",
+            ".travis.yml"
+        ]
     }
 }
